@@ -21,3 +21,6 @@
 \#*\#
 .\#*
 *_flymake.*
+
+# Postgres local server
+/srv

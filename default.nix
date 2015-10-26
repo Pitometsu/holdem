@@ -53,13 +53,24 @@ mkDerivation rec {
 
   # When used as `nix-shell --pure`
   shellHook = ''
-  export PATH="${src}/.bundle/bin:$PATH"
+  export PATH="$(pwd)/.bundle/bin:$PATH"
   export PS1="bundle ${pname} > "
+
+  export PGDATA="$(pwd)/srv/pg-${name}"
+
+  if [ ! -d $PGDATA ]; then
+    initdb
+  fi
+
+  if [ $autostart-postgres ]; then
+    pg_ctl -D $PGDATA -l "$(pwd)/log/pg.log" start
+    trap 'pg_ctl -D $PGDATA stop' EXIT
+  fi
   '';
 
   # used when building environments
   extraCmds = ''
-  export PATH="${src}/.bundle/bin:$PATH"
+  export PATH="$(pwd)/.bundle/bin:$PATH"
   '';
 
   meta = with lib; {
@@ -86,7 +97,7 @@ mkDerivation rec {
   #   # env = mkDerivation {
   #   #   name = "interactive-${pname}-${version}-environment";
   #   #   shellHook = ''
-  #   #     export PATH="${PWD}":"${PATH}"
+  #   #     export PATH="$(pwd)":"${PATH}"
   #   #   '';
   #   # };
   # };

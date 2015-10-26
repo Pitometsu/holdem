@@ -41,7 +41,8 @@ end
 
 group :development do
   gem 'pry'
-  gem 'rubocop'
+  gem 'rubocop', '= 0.30.0' # ruby-2.2.0 compliant syntax
+  gem 'parser', '= 2.2.0.1' # ruby-2.2.0 compliant syntax
   gem "rsense"
 
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -53,7 +54,9 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'cucumber'
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
   gem 'coveralls', '~> 0.8.3'
