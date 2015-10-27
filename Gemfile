@@ -19,6 +19,8 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
 gem 'slim', '~> 3.0', '>= 3.0.6'
 # roles
 gem 'rolify', '~> 4.1', '>= 4.1.1'
+# playing cards
+gem 'deck', '~> 1.1', '>= 1.1.2'
 
 group :assets do
   gem 'sass', '~> 3.4', '>= 3.4.19'

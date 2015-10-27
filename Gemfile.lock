@@ -88,6 +88,7 @@ GEM
       rails (>= 3, < 5)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
+    deck (1.1.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -310,6 +311,7 @@ DEPENDENCIES
   coveralls (~> 0.8.3)
   cucumber-rails
   database_cleaner
+  deck (~> 1.1, >= 1.1.2)
   devise (~> 3.5, >= 3.5.2)
   factory_girl_rails (~> 4.5)
   faker (~> 1.5)
