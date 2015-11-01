@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20151029222838) do
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "statistics", force: :cascade do |t|
+    t.integer  "user_id"
     t.integer  "win"
     t.integer  "loss"
     t.datetime "created_at", null: false
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 20151029222838) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",      null: false
+    t.string   "password",   null: false
     t.string   "nickname"
     t.string   "full_name"
     t.datetime "created_at", null: false

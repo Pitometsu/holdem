@@ -22,9 +22,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create params.slice :email, :nickname, :full_name
-    render "#{@user.id}: #{@user.name} #{@user.new_record? ? 'CREATED' : 'FAILED'}"
-    # TODO: render user dashboard
+    # render text: params.inspect
+    # @user = User.create get_params
+    @user = Statistic.new.create_user get_params
+    # render text: 'Done'
+    render text: "#{@user.id}: #{@user.name} #{@user.new_record? ? 'FAILED' : 'CREATED'}"
+    # # TODO: render user dashboard
   end
 
   def update
@@ -33,5 +36,13 @@ class UsersController < ApplicationController
 
   def destroy
     # TODO
+  end
+
+  private
+
+  def get_params
+    params.require(:email)
+    params.require(:password)
+    params.permit(:email, :password, :nickname, :full_name)
   end
 end

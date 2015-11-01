@@ -1,19 +1,19 @@
 div#box
   h2 Login #{icon('home')}
-  form
+  = form_for User.new do |usr|
     ul
       li
         label> for="email" Email
-        input#inputEmail class="field" type="text" name="email" placeholder="Email address" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="required"
+        = text_field_tag :email, nil, id: 'inputEmail', class: 'field', type: 'text', placeholder: 'Email address', required: '', pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$', title: 'Must be a real mail'
       li
         label> for="password" Password
-        input#inputPassword class="field" type="password" name="password" placeholder="New password" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+        = text_field_tag :password, nil, id: 'inputPassword', class: 'field', type: 'password', placeholder: 'New password', required: '', pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}', title: 'Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters'
       li
         label> for="nickname" Username
-        input#defaultInput class="field" type="text" name="nickname" placeholder="Nickname" title="optional"
+        = text_field_tag :nickname, nil, id: 'defaultInput', class: 'field', type: 'text', placeholder: 'Nickname', title: 'optional'
       li
         label> for="full_name" Full name
-        input#defaultInput class="field" type="text" name="full_name" placeholder="Full name" title="optional"
+        = text_field_tag :full_name, nil, id: 'defaultInput', class: 'field', type: 'text', placeholder: 'Full name', title: 'optional'
       li
-        p class="separator"
-        input class="button" type="submit" value="Sign up"
+        p.separator
+        = submit_tag 'Sign up', class: 'button'

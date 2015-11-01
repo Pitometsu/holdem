@@ -12,7 +12,7 @@ gem 'pg', '~> 0.18.3'
 # authentication
 gem 'devise', '~> 3.5', '>= 3.5.2'
 # authorization
-gem 'cancan', '~> 1.6', '>= 1.6.10'
+gem 'cancancan', '~> 1.10'
 # sass from twitter css design
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
 gem 'autoprefixer-rails', '~> 6.0', '>= 6.0.3'
