@@ -42,7 +42,7 @@ mkDerivation rec {
     # git-hub
     # heroku
     # zsh
-    ruby_2_2_0
+    ruby # ruby_2_2_2
     bundler
     sqlite
     openssl
@@ -55,6 +55,9 @@ mkDerivation rec {
   shellHook = ''
   export PATH="$(pwd)/.bundle/bin:$PATH"
   export PS1="bundle ${pname} > "
+  export BUNDLE_GEMFILE="$(pwd)/Gemfile"
+  export GEM_HOME="$(pwd)/.bundle/ruby/2.2.0"
+  export GEM_PATH="$GEM_HOME:$GEM_PATH"
 
   export PGDATA="$(pwd)/srv/pg-${name}"
 

@@ -21,6 +21,11 @@
 \#*\#
 .\#*
 *_flymake.*
+*.org
 
-# Postgres local server
+# Postgres local server.
 /srv
+
+# Pry.
+.pry_history
+.pryrc

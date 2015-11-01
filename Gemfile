@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.2.0"
+ruby '2.2.2'
 
 # Tech specification:
 # -------------------
@@ -15,15 +15,18 @@ gem 'devise', '~> 3.5', '>= 3.5.2'
 gem 'cancan', '~> 1.6', '>= 1.6.10'
 # sass from twitter css design
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
+gem 'autoprefixer-rails', '~> 6.0', '>= 6.0.3'
+gem 'bootswatch-rails', '~> 3.3', '>= 3.3.5'
+gem 'font-awesome-sass', '~> 4.4.0'
 # markup
 gem 'slim', '~> 3.0', '>= 3.0.6'
 # roles
 gem 'rolify', '~> 4.1', '>= 4.1.1'
 # playing cards
-gem 'deck', '~> 1.1', '>= 1.1.2'
+gem 'card_deck', '~> 3.0', '>= 3.0.1'
 
 group :assets do
-  gem 'sass', '~> 3.4', '>= 3.4.19'
+  gem 'sass-rails', '~> 5.0', '>= 5.0.4'
   gem 'coffee-rails', '~> 4.1'
   gem 'uglifier', '~> 2.7', '>= 2.7.2'
 end
@@ -52,10 +55,24 @@ group :development, :test do
 end
 
 group :development do
-  gem 'pry'
-  gem 'rubocop', '= 0.30.0' # ruby-2.2.0 compliant syntax
-  gem 'parser', '= 2.2.0.1' # ruby-2.2.0 compliant syntax
-  gem "rsense"
+  gem 'pry', require: false
+  gem 'pry-doc', require: false
+  gem 'method_source', require: false
+  gem 'pry-rails', require: false
+  gem 'slim-rails', require: false
+  gem 'html2slim', require: false
+
+  # modern 'rubocop' depend on 'parser' that not compilant to
+  # ruby-2.2.2 syntax, but Emacs's flycheck require last version
+  gem 'rubocop', require: false
+  # gem 'rubocop', '= 0.30.0'
+  # gem 'parser', '= 2.2.0.1'
+
+  # gem 'ruby-lint', require: false
+  # gem 'rubycritic, require: false
+  # gem 'sandi_meter', require: false
+  # gem 'tailor', require: false
+  gem 'metric_fu', require: false
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -65,15 +82,15 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
-  gem 'cucumber-rails', :require => false
+  gem 'rspec-rails', require: false
+  gem 'cucumber-rails', require: false
   # database_cleaner is not required, but highly recommended
-  gem 'database_cleaner'
+  gem 'database_cleaner', require: false
   # MOC data
-  gem 'faker', '~> 1.5'
+  gem 'faker', '~> 1.5', require: false
   # Fixtures
-  gem 'factory_girl_rails', '~> 4.5'
-  gem 'pry-byebug'
-  gem 'pry-stack_explorer'
-  gem 'coveralls', '~> 0.8.3'
+  gem 'factory_girl_rails', '~> 4.5', require: false
+  gem 'pry-byebug', require: false
+  gem 'pry-stack_explorer', require: false
+  gem 'coveralls', '~> 0.8.3', require: false
 end
