@@ -1,13 +1,15 @@
-div#big_box
-  h2 = @user.name
-  dl
-    dt Email
-    dd = @user.email
-    - if @user.nickname.present?
-      dt Nickname
-      dd = @user.nickname
-    - if @user.full_name.present?
-      dt Full name
-      dd = @user.full_name
-      / TODO: edit button (forgot password there as well)
-      / TODO: statistics button
+#box_big
+  h2 Account #{icon('user')}
+  form
+    h3: em = @user.name
+    dl.dl-horizontal
+      dt Email
+      dd = @user.email
+      - if @user.nickname.present?
+        dt Nickname
+        dd = @user.nickname
+      - if @user.full_name.present?
+        dt Full name
+        dd = @user.full_name
+        / TODO: edit button (forgot password there as well)
+        / TODO: statistics button

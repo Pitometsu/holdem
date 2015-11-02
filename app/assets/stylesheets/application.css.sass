@@ -9,7 +9,6 @@
 @import bootswatch/paper/bootswatch
 
 h1
-  text-align: center
   margin: 0
   line-height: 70pt
 h2
@@ -26,34 +25,43 @@ body
   background: #DDDDDD
   padding-bottom: 70pt
 #content
+  text-align: left
   min-height: 100%
   height: auto !important
   height: 100%
   margin: 0 auto -50pt
   padding-bottom: 50pt
-#box
-  width: 50%
-  margin: 0 auto
+#full
+  text-align: center
+  min-width: 450pt
+#box_tiny
   width: 320pt
+  padding: 25pt 30pt
+  margin: 0 auto
   background: #64c8ef
-  padding: 25pt 30pt
   border-radius: 10pt
-#big_box
-  width: 75%
-  margin: 0 auto
-  width: 320pt
+#box_big
+  min-width: 320pt
+  margin-left: 50pt
+  margin-right: 50pt
+  /* margin: 0 auto
+  padding: 25pt 30pt
   background: #ff849d
-  padding: 25pt 30pt
   border-radius: 10pt
+dt
+  @extend h4
 dd
+  @extend .lead
   word-wrap: break-word
+  padding-top: 5pt
 #footer, #push
   height: 50pt
   clear: both
 #footer
+  text-align: left
   background: #F9F9F9
   line-height: 50pt
-  padding: 0 20pt
+  padding: 0 50pt
 ul
   padding: 0
 li
