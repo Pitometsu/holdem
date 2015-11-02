@@ -3,13 +3,14 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     # TODO: markup it
-    dashboard = @users.map { |usr| "name:#{usr.name}</br>win:#{usr.statistic.win}loss:#{usr.statistic.loss}</br>" }.join '<br/>'
+    dashboard = @users.map { |usr| "<b>name:</b> #{usr.name}</br><b>win:</b> #{usr.statistic.win}  <b>loss:</b> #{usr.statistic.loss}</br>" }.join '<br/>'
     render text: dashboard.presence || 'Nobody yet here <b>:(</b>'
   end
 
   def show
+    @user = User.where(id: params[:id]).first
     # TODO: render user dashboard
-    render text: 'TODO: Dashboard here'
+    # render text: 'TODO: Dashboard here'
   end
 
   def new
@@ -22,10 +23,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    # render text: params.inspect
-    # @user = User.create get_params
     @user = Statistic.new.create_user get_params
-    # render text: 'Done'
     render text: "#{@user.id}: #{@user.name} #{@user.new_record? ? 'FAILED' : 'CREATED'}"
     # # TODO: render user dashboard
   end
@@ -41,8 +39,8 @@ class UsersController < ApplicationController
   private
 
   def get_params
-    params.require(:email)
-    params.require(:password)
-    params.permit(:email, :password, :nickname, :full_name)
+    params.require :email
+    params.require :password
+    params.permit  :email, :password, :nickname, :full_name
   end
 end
