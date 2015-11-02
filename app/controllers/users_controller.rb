@@ -10,12 +10,10 @@ class UsersController < ApplicationController
   def show
     @user = User.where(id: params[:id]).first
     # TODO: render user dashboard
-    # render text: 'TODO: Dashboard here'
   end
 
   def new
     # TODO: sign in / sign up
-    # render text: 'TODO: sign in / sign up'
   end
 
   def edit
@@ -25,7 +23,7 @@ class UsersController < ApplicationController
   def create
     @user = Statistic.new.create_user get_params
     render text: "#{@user.id}: #{@user.name} #{@user.new_record? ? 'FAILED' : 'CREATED'}"
-    # # TODO: render user dashboard
+    # TODO: render user dashboard
   end
 
   def update
