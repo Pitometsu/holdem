@@ -2,9 +2,6 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-    # TODO: markup it
-    dashboard = @users.map { |usr| "<b>name:</b> #{usr.name}</br><b>win:</b> #{usr.statistic.win}  <b>loss:</b> #{usr.statistic.loss}</br>" }.join '<br/>'
-    render text: dashboard.presence || 'Nobody yet here <b>:(</b>'
   end
 
   def show

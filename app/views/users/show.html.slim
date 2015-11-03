@@ -1,6 +1,6 @@
 - if @user.present?
   #box_big
-    h2 Account #{icon('home')}
+    h2 Account #{icon 'home'}
     form
       h3: em = @user.name
       dl.dl-horizontal
@@ -16,6 +16,6 @@
           / TODO: statistics button
 - else
   #box_err
-    h2 Account #{icon('search')}
-    h3: p Sorry…
-    p.lead.right  It lost.
+    h2 Account #{icon 'search'}
+    h3: p It lost…
+    p.lead.right Deal with it 😎

@@ -1,0 +1,29 @@
+- if @users.present?
+  #box_big
+    h2 Users #{icon 'users'}
+    form
+      h3
+        - if @user.present?
+          ' Greetings,
+          em = @user.name
+          |!
+        - else
+          | Who the hell are you???
+      - @users.each do |usr|
+        hr
+        dl.dl-horizontal
+          dt Name
+          dd = usr.name
+          - if usr.statistic.present?
+            dt Win
+            dd = usr.statistic.win
+            dt Loss
+            dd = usr.statistic.loss
+          - else
+            dt Statistic
+            dd not found #{icon 'warning'}
+- else
+  #box_err
+    h2 Is there anybody… #{icon 'search'}
+    h3: p here?
+    p.lead.right Nobody cares!
