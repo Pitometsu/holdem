@@ -1,6 +1,6 @@
-#box_big
-  - if @user.present?
-    h2 Account #{icon('user')}
+- if @user.present?
+  #box_big
+    h2 Account #{icon('home')}
     form
       h3: em = @user.name
       dl.dl-horizontal
@@ -14,7 +14,8 @@
           dd = @user.full_name
           / TODO: edit button (forgot password there as well)
           / TODO: statistics button
-  - else
-    h2 Account #{icon('user')}
-    h3: p Not found :(
-    p.lead.right Sorry...
+- else
+  #box_err
+    h2 Account #{icon('search')}
+    h3: p Sorry…
+    p.lead.right  It lost.
