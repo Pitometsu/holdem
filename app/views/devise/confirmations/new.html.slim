@@ -1,11 +1,11 @@
-h2
-  | Resend confirmation instructions
-= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
-  .actions
-    = f.submit "Resend confirmation instructions"
-= render "devise/shared/links"
+#box_tiny
+  = render "devise/shared/links"
+  h2 Confirmation #{icon 'envelope-o'}
+  = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+    = devise_error_messages!
+    p
+      = f.label :email
+      br
+      = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), placeholder: 'Email address', required: '', pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}', title: 'Must be a real mail'
+    p
+      = f.submit "Resend instructions", class: 'button'

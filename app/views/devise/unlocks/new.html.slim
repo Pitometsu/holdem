@@ -1,11 +1,11 @@
-h2
-  | Resend unlock instructions
-= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true
-  .actions
-    = f.submit "Resend unlock instructions"
-= render "devise/shared/links"
+#box_tiny
+  = render "devise/shared/links"
+  h2 Unlock #{icon 'unlock'}
+  = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+    = devise_error_messages!
+    p
+      = f.label :email, 'Account'
+      br
+      = f.text_field :email, autofocus: true, placeholder: 'Email or Name', required: '', pattern: '[ a-zA-Z0-9\'-]*|[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}', title: 'Must be a real mail or username'
+    p
+      = f.submit "Send instructions", class: 'button'

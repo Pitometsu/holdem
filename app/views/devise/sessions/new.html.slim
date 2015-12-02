@@ -1,19 +1,18 @@
 #box_tiny
+  = render "devise/shared/links"
   h2 Log in #{icon 'sign-in'}
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     p
       = f.label :email, 'Account'
       br
-      = f.text_field :email, autofocus: true, placeholder: 'Email or Name', required: '', class: 'field', pattern: '[ a-zA-Z0-9\'-]*|[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}', title: 'Must be a real mail or username'
+      = f.text_field :email, autofocus: true, placeholder: 'Email or Name', required: '', pattern: '[ a-zA-Z0-9\'-]*|[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}', title: 'Must be a real mail or username'
     p
       = f.label :password
       br
-      = f.password_field :password, autocomplete: "off", placeholder: 'Password', required: '', class: 'field', pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}', title: 'Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters'
+      = f.password_field :password, autocomplete: "off", placeholder: 'Password', required: '', pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}', title: 'Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters'
     - if devise_mapping.rememberable?
         p
           = f.check_box :remember_me, checked: 'checked'
           = f.label :remember_me
     p
       = f.submit "Log in", class: 'button'
-  #links
-    = render "devise/shared/links"
