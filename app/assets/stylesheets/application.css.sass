@@ -79,8 +79,11 @@ dd
 #footer
   text-align: left
   background: #F9F9F9
-  line-height: 50pt
-  padding: 0 50pt
+  span
+    line-height: 50pt
+    padding: 0 25pt
+span.vr
+  border-left: 2pt solid #BBB
 ul
   padding: 0
 li
@@ -90,12 +93,12 @@ li
 input
   @extend .form-control
   padding: 0 10pt
+input[type=text], input[type=password], input[type=email]
+  text-align: center
+  background: #F9F9F9
 label
   @extend h4
   margin: 5pt
-.field
-  text-align: center
-  background: #F9F9F9
 .button
   @extend .btn
   @extend .btn-primary
@@ -123,6 +126,8 @@ input[type=checkbox]
     margin: 0pt
     padding: 0pt
     line-height: 13pt
+#links
+  margin-top: 10pt
 
 /*** custom checkboxes **
 

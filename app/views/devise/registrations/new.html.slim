@@ -2,39 +2,40 @@
   h2 Sign up #{icon 'user-plus'}
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     - error_message = devise_error_messages!
+
     - if error_message.present?
       #box_err_inline
         = error_message
     p
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, class: 'field'
+      = f.label :email
+      br
+      = f.email_field :email, autofocus: true, placeholder: 'Email address', required: '', pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}', title: 'Must be a real mail'
     p
-    = f.label :password
-    - if @minimum_password_length
+      = f.label :password
+      - if @minimum_password_length
+        em
+          | (
+          = @minimum_password_length
+          |  characters minimum)
+      br
+      = f.password_field :password, autocomplete: 'off', placeholder: 'New password', required: '', pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}', title: 'Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters'
+    p
+      = f.label :password_confirmation
+      br
+      = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Confirm password', required: '', pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}', title: 'Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters'
+    p
+      = f.label :nickname, 'Username'
       em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    br
-    = f.password_field :password, autocomplete: 'off', class: 'field'
+        | (Optional)
+      br
+      = f.text_field :nickname, placeholder: 'Nickname'
     p
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: 'off', class: 'field'
+      = f.label :full_name
+      em
+        | (Optional)
+      br
+      = f.text_field :full_name, placeholder: 'Full name'
     p
-    label> for='nickname' Username
-    em
-      | (Optional)
-    br
-    = f.text_field :nickname, class: 'field'
-    p
-    label> for='full_name' Full name
-    em
-      | (Optional)
-    br
-    = f.text_field :full_name, class: 'field'
-    p
-    = f.submit 'Sign up', class: 'button'
-  p
-  = render 'devise/shared/links'
+      = f.submit 'Sign up', class: 'button'
+  #links
+    = render 'devise/shared/links'
