@@ -1,30 +1,49 @@
+# -*- coding: utf-8 -*-
+
 # User's dashboard.
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @users = User.all
   end
 
   def show
-    @user = User.where(id: params[:id]).first
-    # TODO: render user dashboard
+    @user = User.find params[:id]
   end
 
   def new
-    # TODO: sign in / sign up
+    @user = User.new
   end
 
   def edit
-    # TODO
+    @user = User.find params[:id]
   end
 
   def create
-    @user = Statistic.new.create_user get_params
-    render text: "#{@user.id}: #{@user.name} #{@user.new_record? ? 'FAILED' : 'CREATED'}"
-    # TODO: render user dashboard
+    @user = User.new get_params
+    @statistic = @user.build_statistic
+
+    if @user.save
+      # log_in @user
+      flash[:success] = "Welcome, #{@user.name}! We were waiting for you! 😎"
+      redirect_to @user
+    else
+      flash[:failure] = 'Something went wrong during creating new user. You may try again.'
+      render 'new'
+    end
   end
 
   def update
-    # TODO
+    case params[:submit]
+    when 'Forgot password'
+      flash[:failure] = 'Coming soon!…'
+    when 'Cancel'
+      redirect_to @user
+    when 'Save'
+      do_update
+    end
+    redirect_to @user
   end
 
   def destroy
@@ -37,5 +56,16 @@ class UsersController < ApplicationController
     params.require :email
     params.require :password
     params.permit  :email, :password, :nickname, :full_name
+  end
+
+  def do_update
+    @user = User.find params[:id]
+
+    if @user.update_attributes get_params
+      flash[:success] = "All done, #{@user.name}! Prove your self!"
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 end

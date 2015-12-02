@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/422' => 'errors#unprocessable_entity'
   get '/500' => 'errors#internal_server_error'
 
+  devise_for :users
   resources :users
 
   # The priority is based upon order of creation:

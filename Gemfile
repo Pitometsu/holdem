@@ -20,10 +20,13 @@ gem 'bootswatch-rails', '~> 3.3', '>= 3.3.5'
 gem 'font-awesome-sass', '~> 4.4.0'
 # markup
 gem 'slim', '~> 3.0', '>= 3.0.6'
+gem 'slim-rails', '~> 3.0', '>= 3.0.1'
+gem 'html2slim', require: false
+
 # roles
 gem 'rolify', '~> 4.1', '>= 4.1.1'
 # playing cards
-gem 'card_deck', '~> 3.0', '>= 3.0.1'
+gem 'card_deck', '= 3.0.1'
 
 group :assets do
   gem 'sass-rails', '~> 5.0', '>= 5.0.4'
@@ -50,28 +53,22 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # debug
+  gem 'pry', require: false
+  gem 'pry-rails'
+  gem 'pry-remote', require: false
   gem 'byebug'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer', require: false
 end
 
 group :development do
-  gem 'pry', require: false
+  # code navigation
   gem 'pry-doc', require: false
   gem 'method_source', require: false
-  gem 'pry-rails', require: false
-  gem 'slim-rails', require: false
-  gem 'html2slim', require: false
-
-  # modern 'rubocop' depend on 'parser' that not compilant to
-  # ruby-2.2.2 syntax, but Emacs's flycheck require last version
+  gem 'pry-awesome_print', require: false
+  # analitics
   gem 'rubocop', require: false
-  # gem 'rubocop', '= 0.30.0'
-  # gem 'parser', '= 2.2.0.1'
-
-  # gem 'ruby-lint', require: false
-  # gem 'rubycritic, require: false
-  # gem 'sandi_meter', require: false
-  # gem 'tailor', require: false
   gem 'metric_fu', require: false
 
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -82,15 +79,13 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', require: false
-  gem 'cucumber-rails', require: false
+  gem 'rspec-rails'
+  gem 'cucumber-rails'
   # database_cleaner is not required, but highly recommended
-  gem 'database_cleaner', require: false
+  gem 'database_cleaner'
   # MOC data
-  gem 'faker', '~> 1.5', require: false
+  gem 'faker', '~> 1.5'
   # Fixtures
-  gem 'factory_girl_rails', '~> 4.5', require: false
-  gem 'pry-byebug', require: false
-  gem 'pry-stack_explorer', require: false
+  gem 'factory_girl_rails', '~> 4.5'
   gem 'coveralls', '~> 0.8.3', require: false
 end

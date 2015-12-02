@@ -2,7 +2,7 @@
   #box_big
     h2 Account #{icon 'home'}
     form
-      h3: em = @user.name
+      h3: em: a href=edit_user_path(@user.id) = @user.login
       dl.dl-horizontal
         dt Email
         dd = @user.email

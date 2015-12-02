@@ -47,12 +47,14 @@ mkDerivation rec {
     sqlite
     openssl
     zlib
-    postgresql
+    postgresql94
     nodejs
   ];
 
   # When used as `nix-shell --pure`
   shellHook = ''
+  alias bundler_clean='rm ./.bundle/bin Gemfile.lock ./.bundle/ruby -Rf'
+  alias bc=bundler_clean
   export PATH="$(pwd)/.bundle/bin:$PATH"
   export PS1="bundle ${pname} > "
   export BUNDLE_GEMFILE="$(pwd)/Gemfile"

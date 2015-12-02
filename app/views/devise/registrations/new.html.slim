@@ -1,0 +1,40 @@
+#box_tiny
+  h2 Sign up #{icon 'user-plus'}
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    - error_message = devise_error_messages!
+    - if error_message.present?
+      #box_err_inline
+        = error_message
+    p
+    = f.label :email
+    br
+    = f.email_field :email, autofocus: true, class: 'field'
+    p
+    = f.label :password
+    - if @minimum_password_length
+      em
+        | (
+        = @minimum_password_length
+        |  characters minimum)
+    br
+    = f.password_field :password, autocomplete: 'off', class: 'field'
+    p
+    = f.label :password_confirmation
+    br
+    = f.password_field :password_confirmation, autocomplete: 'off', class: 'field'
+    p
+    label> for='nickname' Username
+    em
+      | (Optional)
+    br
+    = f.text_field :nickname, class: 'field'
+    p
+    label> for='full_name' Full name
+    em
+      | (Optional)
+    br
+    = f.text_field :full_name, class: 'field'
+    p
+    = f.submit 'Sign up', class: 'button'
+  p
+  = render 'devise/shared/links'

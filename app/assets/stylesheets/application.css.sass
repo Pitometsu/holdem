@@ -54,6 +54,19 @@ body
   padding: 25pt 30pt
   background: #ff849d
   border-radius: 10pt
+#box_err_inline
+  margin-top: 20pt
+  padding: 20pt
+  background: #ff849d
+  border-radius: 8pt
+div.field_with_errors
+  display: inline
+div.field_with_errors
+  input
+    background: #ff849d
+div#error_explanation
+  h2
+    text-align: left
 dt
   @extend h4
 dd
@@ -76,7 +89,7 @@ li
   margin-top: 10pt
 input
   @extend .form-control
-  padding: 0pt 10pt
+  padding: 0 10pt
 label
   @extend h4
   margin: 5pt
@@ -87,7 +100,51 @@ label
   @extend .btn
   @extend .btn-primary
   height: 35pt
+.button_default
+  @extend .btn
+  @extend .btn-default
+  height: 35pt
+#btn_box
+  @extend .btn-group
+  padding: 0
+  /* display: inline
 .separator
   height: 10pt
 .right
   text-align: center
+input[type=checkbox]
+  height: 13pt
+  width: 13pt
+  margin: 0pt
+  padding: 0pt
+  vertical-align: 0pt
+  border-width: 0pt
+  + label
+    margin: 0pt
+    padding: 0pt
+    line-height: 13pt
+
+/*** custom checkboxes **
+
+input[type=checkbox]
+  display: none
+  + label:before
+    font-family: FontAwesome
+    display: inline-block
+    content: "\f096"
+    letter-spacing: 20px
+    height: 13pt
+    width: 20pt
+    margin: 0pt
+    padding: 0pt
+  &:checked + label:before
+    content: "\f046"
+    letter-spacing: 5px
+
+/* to hide the checkbox itself
+
+/* unchecked icon
+/* space between checkbox and label
+
+/* checked icon
+/* allow space for check mark

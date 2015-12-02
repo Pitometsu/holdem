@@ -1,0 +1,23 @@
+#box_tiny
+  h2 Setup #{icon 'cog'}
+  = form_for @user do |usr|
+    ul
+      li
+        label> for="email" Email
+        = text_field_tag :email, @user.email, id: 'inputEmail', class: 'field', type: 'text', placeholder: 'Email address', required: '', pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$', title: 'Must be a real mail'
+      li
+        label> for="password" Password
+        = text_field_tag :password, nil, id: 'inputPassword', class: 'field', type: 'password', placeholder: 'New password', required: '', pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}', title: 'Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters'
+      li
+        label> for="nickname" Username
+        = text_field_tag :nickname, @user.nickname, id: 'defaultInput', class: 'field', type: 'text', placeholder: 'Nickname', title: 'optional'
+      li
+        label> for="full_name" Full name
+        = text_field_tag :full_name, @user.full_name, id: 'defaultInput', class: 'field', type: 'text', placeholder: 'Full name', title: 'optional'
+      li
+        p.separator
+        #btn_box
+          a.button_default href=user_path(@user) Forgot password
+          a.button_default href=user_path(@user) Cancel
+          a.button href=user_path(@user) Save
+        / = submit_tag 'Save', class: 'button btn btn-default'
