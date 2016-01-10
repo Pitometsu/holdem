@@ -31,18 +31,15 @@ mkDerivation rec {
   name     = "${pname}-${version}";
   pname    = "holdem";
   version  = "0.1";
-
   src      = ./.;
-
   bundler = bundler_HEAD.override { inherit ruby; };
-
   buildInputs = [
     # stdenv
     # gitAndTools.gitFull
     # git-hub
     # heroku
     # zsh
-    ruby # ruby_2_2_2
+    ruby_2_2_2
     bundler
     sqlite
     openssl
@@ -50,34 +47,29 @@ mkDerivation rec {
     postgresql94
     nodejs
   ];
-
   # When used as `nix-shell --pure`
   shellHook = ''
   alias bundler_clean='rm ./.bundle/bin Gemfile.lock ./.bundle/ruby -Rf'
   alias bc=bundler_clean
   export PATH="$(pwd)/.bundle/bin:$PATH"
-  export PS1="bundle ${pname} > "
+  export PS1="bundle ${pname} > " # not work in ZSH with custom PROMPT, use NIX_SHELL_DIR for custom script
+  export NIX_SHELL_DIR="$(pwd)"
   export BUNDLE_GEMFILE="$(pwd)/Gemfile"
   export GEM_HOME="$(pwd)/.bundle/ruby/2.2.0"
   export GEM_PATH="$GEM_HOME:$GEM_PATH"
-
   export PGDATA="$(pwd)/srv/pg-${name}"
-
   if [ ! -d $PGDATA ]; then
     initdb
   fi
-
   if [ $autostart-postgres ]; then
     pg_ctl -D $PGDATA -l "$(pwd)/log/pg.log" start
     trap 'pg_ctl -D $PGDATA stop' EXIT
   fi
   '';
-
   # used when building environments
   extraCmds = ''
   export PATH="$(pwd)/.bundle/bin:$PATH"
   '';
-
   meta = with lib; {
     homepage    = "https://github.com/Pitometsu/holdem#readme";
     description = "A program that emulates a texas hold'em game.";
@@ -85,15 +77,12 @@ mkDerivation rec {
     maintainers = with maintainers; [ Pitometsu ];
     platforms   = platforms.unix;
   };
-
   # buildPhase = ''
   #   bundle exec rake --trace assets:precompile RAILS_ENV=production
   # '';
-
   # installPhase = ''
   #   cp -r . $out
   # '';
-
   # passthru = {
   #   inherit nodejs;
   #   bundler = bundler;

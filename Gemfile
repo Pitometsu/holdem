@@ -6,13 +6,17 @@ ruby '2.2.2'
 # Devise, CanCan, Bootstrap, Haml/Slim, Sass, pg (Postgres),
 # faker, pry, cucumber, jquery, rolify, factory girl.
 
+# -> use Pundit instead of CanCan
+# -> use Bootswatch instead of Bootstrap
+
 gem 'rails', '~> 4.2', '>= 4.2.4'
 gem 'pg', '~> 0.18.3'
 
 # authentication
 gem 'devise', '~> 3.5', '>= 3.5.2'
 # authorization
-gem 'cancancan', '~> 1.10'
+# gem 'cancancan', '~> 1.10'
+gem 'pundit', '~> 1.0', '>= 1.0.1'
 # sass from twitter css design
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
 gem 'autoprefixer-rails', '~> 6.0', '>= 6.0.3'
@@ -23,10 +27,12 @@ gem 'slim', '~> 3.0', '>= 3.0.6'
 gem 'slim-rails', '~> 3.0', '>= 3.0.1'
 gem 'html2slim', require: false
 
+# forms
+gem 'simple_form', '~> 3.2'
 # roles
 gem 'rolify', '~> 4.1', '>= 4.1.1'
 # playing cards
-gem 'card_deck', '= 3.0.1'
+gem 'card_deck', '~> 4.0', '>= 4.0.1'
 
 group :assets do
   gem 'sass-rails', '~> 5.0', '>= 5.0.4'

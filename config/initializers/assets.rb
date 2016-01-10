@@ -14,4 +14,3 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w(404.html 422.html 500.html)
 Rails.application.config.assets.paths << Rails.root.join('app/assets/html')
 Rails.application.config.assets.register_mime_type('text/html', '.html')
-Rails.application.assets.register_engine('.slim', Slim::Template)

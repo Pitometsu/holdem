@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new get_params
+    @user = User.new user_params
     @statistic = @user.build_statistic
 
     if @user.save
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 
   private
 
-  def get_params
+  def user_params
     params.require :email
     params.require :password
     params.permit  :email, :password, :nickname, :full_name
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   def do_update
     @user = User.find params[:id]
 
-    if @user.update_attributes get_params
+    if @user.update_attributes user_params
       flash[:success] = "All done, #{@user.name}! Prove your self!"
       redirect_to @user
     else

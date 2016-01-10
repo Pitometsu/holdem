@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  # TODO: add proper title (layout for error pages?)
   get 'errors/not_found'
   get 'errors/unprocessable_entity'
   get 'errors/internal_server_error'
   get '/404' => 'errors#not_found'
   get '/422' => 'errors#unprocessable_entity'
   get '/500' => 'errors#internal_server_error'
+
+  # TODO: /4O3 Access denied
 
   devise_for :users
   resources :users
