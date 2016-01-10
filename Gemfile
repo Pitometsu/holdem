@@ -23,7 +23,7 @@ gem 'autoprefixer-rails', '~> 6.0', '>= 6.0.3'
 gem 'bootswatch-rails', '~> 3.3', '>= 3.3.5'
 gem 'font-awesome-sass', '~> 4.4.0'
 # markup
-gem 'slim', '~> 3.0', '>= 3.0.6'
+# gem 'slim', '~> 3.0', '>= 3.0.6'
 gem 'slim-rails', '~> 3.0', '>= 3.0.1'
 gem 'html2slim', require: false
 
@@ -86,7 +86,7 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   # MOC data
