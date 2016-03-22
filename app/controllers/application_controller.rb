@@ -3,10 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :track_user
 
   protected
 
   def configure_permitted_parameters
+    # binding.pry
+
     devise_parameter_sanitizer.for :sign_up do |usr|
       usr.permit usr_sign_up_params
     end
@@ -20,8 +23,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def track_user
+    current_user.track unless current_user.nil?
+  end
+
   def after_sign_in_path_for(resource)
-    '/dashboard'
+    '/'
   end
 
   private

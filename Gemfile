@@ -10,13 +10,17 @@ ruby '2.2.2'
 # -> use Bootswatch instead of Bootstrap
 
 gem 'rails', '~> 4.2', '>= 4.2.4'
+gem 'puma', '~> 2.15', '>= 2.15.3'
 gem 'pg', '~> 0.18.3'
 
 # authentication
 gem 'devise', '~> 3.5', '>= 3.5.2'
+# users online
+gem 'onliner', '~> 1.1', '>= 1.1.1'
 # authorization
 # gem 'cancancan', '~> 1.10'
 gem 'pundit', '~> 1.0', '>= 1.0.1'
+# TODO: compass
 # sass from twitter css design
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
 gem 'autoprefixer-rails', '~> 6.0', '>= 6.0.3'
@@ -25,6 +29,8 @@ gem 'font-awesome-sass', '~> 4.4.0'
 # markup
 # gem 'slim', '~> 3.0', '>= 3.0.6'
 gem 'slim-rails', '~> 3.0', '>= 3.0.1'
+# Add logic-free view mustache support to slim templates
+# gem 'slim-mustache', '~> 1.0', '>= 1.0.2'
 gem 'html2slim', require: false
 
 # forms

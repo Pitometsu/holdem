@@ -2,7 +2,10 @@
   #box_big
     h2 Account #{icon 'home'}
     form
-      h3: em: a href=edit_user_path(@user.id) = @user.login
+      h3
+        em>: a href=edit_user_path(@user.id) = @user.login
+        = link_to (icon 'sign-out'), destroy_user_session_path, method: :delete
+        / TODO: check logout for not-current-user (admin case)
       dl.dl-horizontal
         dt Email
         dd = @user.email

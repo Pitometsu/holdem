@@ -21,3 +21,9 @@
       - resource_class.omniauth_providers.each do |provider|
         li
           = link_to (icon 'sign-in' + provider.to_s.titleize), omniauth_authorize_path(resource_name, provider), title: "Sign in with #{provider.to_s.titleize}"
+- if notice.present?
+  p.notice
+    = notice
+- if alert.present?
+  p.alert
+    = alert

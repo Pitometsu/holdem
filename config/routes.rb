@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # root 'dashboard'
   # TODO: add proper title (layout for error pages?)
   get 'errors/not_found'
   get 'errors/unprocessable_entity'
@@ -9,8 +10,10 @@ Rails.application.routes.draw do
 
   # TODO: /4O3 Access denied
 
-  devise_for :users
+  devise_for :users, path: '', path_names: { sign_in: 'login',
+                                             sign_out: 'logout' }
   resources :users
+  resources :games
 
   # The priority is based upon order of creation:
   #   first created -> highest priority.

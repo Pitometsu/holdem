@@ -39,6 +39,7 @@ mkDerivation rec {
     # git-hub
     # heroku
     # zsh
+    redis
     ruby_2_2_2
     bundler
     sqlite
@@ -65,6 +66,7 @@ mkDerivation rec {
     pg_ctl -D $PGDATA -l "$(pwd)/log/pg.log" start
     trap 'pg_ctl -D $PGDATA stop' EXIT
   fi
+  redis-server --daemonize yes
   '';
   # used when building environments
   extraCmds = ''
